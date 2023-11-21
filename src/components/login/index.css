@@ -1,0 +1,63 @@
+.background-login {
+  background-color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: white;
+  padding: 30px;
+  height: 50vh;
+  width: 50vw;
+  box-shadow: 5px 5px 5px 5px white;
+}
+
+.failure-text {
+  color: red;
+  font-size: 12px;
+  font-family: 'Roboto';
+  margin-left: 20px;
+}
+
+.label-text {
+  color: white;
+  font-size: 20px;
+  font-family: 'Roboto';
+}
+.image {
+  height: 50px;
+  width: 150px;
+  margin: 20px;
+}
+.image-cont {
+  text-align: center;
+  width: 100%;
+}
+
+.inputEl {
+  height: 40px;
+  width: 90%;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  margin: 10px;
+}
+
+.button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 20px;
+  margin-bottom: 0px;
+  height: 40px;
+  width: 90%;
+}

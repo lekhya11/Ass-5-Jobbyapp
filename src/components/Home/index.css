@@ -1,0 +1,14 @@
+.bg-container {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/home-sm-bg.png');
+  height: 200vh;
+  width: 100vw;
+  background-size: cover;
+  padding: 10px;
+}
+
+.heading {
+  color: white;
+}
+.paragraphs {
+  color: white;
+}
