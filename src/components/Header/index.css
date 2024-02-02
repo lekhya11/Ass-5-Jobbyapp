@@ -1,0 +1,38 @@
+.header-bg {
+  background-color: #202020;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.header-image {
+  height: 85px;
+  width: 150px;
+  padding: 10px;
+}
+
+.para {
+  color: white;
+  font-weight: bold;
+  font-family: 'Roboto';
+  margin: 10px;
+}
+
+.links-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-button {
+  background-color: #6366f1;
+  width: 80px;
+  padding: 5px;
+  text-align: center;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-family: 'Roboto';
+  margin: 10px;
+}

@@ -1,4 +1,6 @@
 import {Component} from 'react'
+import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 
 import './index.css'
 
@@ -6,7 +8,7 @@ class LoginForm extends Component {
   state = {
     username: '',
     password: '',
-    isSuccues: false,
+    isFailed: false,
     errorMsg: '',
   }
 
@@ -18,8 +20,9 @@ class LoginForm extends Component {
     this.setState({password: event.target.value})
   }
 
-  onClickSuccess = () => {
-    console.log('hello')
+  onSuccessView = jwtToken => {
+    Cookies.set('kookie', jwtToken, {expires: 30})
+    // console.log('hello')
     const {history} = this.props
 
     history.push('/')
@@ -27,7 +30,7 @@ class LoginForm extends Component {
 
   onFailureView = errorMsg => {
     this.setState({
-      isSuccues: true,
+      isFailed: true,
       errorMsg,
     })
   }
@@ -35,25 +38,37 @@ class LoginForm extends Component {
   onClickSubmit = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    const userDetails = {username, password}
+    const userDetails = {
+      username,
+      password,
+    }
+
+    const url = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
     }
-    const response = await fetch('https://apis.ccbp.in/login', options)
-    console.log(response)
+
+    const response = await fetch(url, options)
+    // console.log(response)
     const data = await response.json()
     console.log(data)
 
     if (response.ok === true) {
-      this.onClickSuccess()
+      this.onSuccessView(data.jwt_token)
     } else {
       this.onFailureView(data.error_msg)
     }
   }
 
   render() {
-    const {isSuccues, username, password, errorMsg} = this.state
+    const jwtToken = Cookies.get('kookie')
+
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
+
+    const {isFailed, username, password, errorMsg} = this.state
     return (
       <div className="background-login">
         <form className="card-cont" onSubmit={this.onClickSubmit}>
@@ -90,7 +105,7 @@ class LoginForm extends Component {
           <button type="submit" className="button">
             Login
           </button>
-          {isSuccues && <p className="failure-text">*{errorMsg} </p>}
+          {isFailed && <p className="failure-text">*{errorMsg} </p>}
         </form>
       </div>
     )
